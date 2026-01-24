@@ -1,0 +1,9 @@
+ultralytics
+gradio
+opencv-python
+pandas
+tqdm
+kagglehub
+matplotlib
+seaborn
+numpy

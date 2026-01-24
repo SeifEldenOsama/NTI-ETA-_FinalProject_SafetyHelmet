@@ -17,13 +17,18 @@ The core of the system is built around the **YOLO (You Only Look Once)** archite
 
 ## Project Structure
 
-The repository is organized into the following main directories:
+The repository is organized into a professional modular structure:
 
 | Directory | Description |
 | :--- | :--- |
-| `model/` | Contains the trained object detection model file, `best_float32.tflite`, which is the optimized TFLite version of the YOLO model. |
-| `notebooks/` | Contains the Jupyter Notebooks used for the project: `Safety_helmet.ipynb` (for data preparation and training) and `safety_helmet_application.ipynb` (for running the Gradio application). |
-| `presentation/` | Contains the project's final presentation in PDF format, detailing the methodology, results, and conclusions. |
+| `src/` | **Source code directory** containing modular Python packages. |
+| `src/models/` | Model wrapper for YOLO/TFLite inference. |
+| `src/data/` | Data processing and annotation parsing utilities. |
+| `src/app/` | Gradio web application implementation. |
+| `src/config.py` | Centralized configuration for the project. |
+| `model/` | Contains the trained object detection model file, `best_float32.tflite`. |
+| `notebooks/` | Original Jupyter Notebooks for research and experimentation. |
+| `presentation/` | Project's final presentation in PDF format. |
 
 ## Technical Implementation
 
@@ -58,22 +63,27 @@ To set up and run the application, you will need a Python environment with the n
 
 ### Installation
 
-The following Python packages are required. They can typically be installed using `pip`:
+Install the required dependencies using the provided `requirements.txt`:
 
 ```bash
-pip install ultralytics gradio opencv-python numpy
+pip install -r requirements.txt
 ```
 
 ### Running the Application
+
+You can now run the application directly as a Python module:
 
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/SeifEldenOsama/SafetyHelmet.git
     cd SafetyHelmet
     ```
-2.  **Ensure the model is present:** Verify that the `model/best_float32.tflite` file exists.
-3.  **Launch the application notebook:** Open the `notebooks/safety_helmet_application.ipynb` file in your Jupyter environment.
-4.  **Execute the cells:** Run all cells in the notebook. The final cell will launch the Gradio interface, providing a local URL (and optionally a public share link) to interact with the model.
+2.  **Launch the Gradio App:**
+    ```bash
+    python3 -m src.app.gradio_app
+    ```
+
+Alternatively, you can still use the original notebooks in the `notebooks/` directory for step-by-step execution.
 
 ## References
 
